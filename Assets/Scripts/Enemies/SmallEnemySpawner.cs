@@ -55,8 +55,5 @@ public class SmallEnemySpawner : MonoBehaviour
     {
         //Spawn Troll Prefab
         GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
-        //SetTarget on troll to target
-        Enemy enemy = clone.GetComponent<Enemy>();
-        enemy.target = target;
     }
 }
