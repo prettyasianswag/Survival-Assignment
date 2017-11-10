@@ -58,7 +58,7 @@ namespace Networking
                 float h = Input.GetAxis("Horizontal");
                 player.Move(h, v);
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetButtonDown("Jump"))
                 {
                     player.Jump();
                 }

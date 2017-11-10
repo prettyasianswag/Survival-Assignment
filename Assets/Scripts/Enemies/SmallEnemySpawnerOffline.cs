@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
-public class SmallEnemySpawner : NetworkBehaviour
+public class SmallEnemySpawnerOffline : MonoBehaviour
 {
     public Transform target;
 
@@ -55,6 +54,5 @@ public class SmallEnemySpawner : NetworkBehaviour
     void SpawnEnemy()
     {
         GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
-        NetworkServer.Spawn(clone);
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Networking
 {
-    public class PlayerShoot : NetworkBehaviour
+    public class PlayerShootOffline : MonoBehaviour
     {
         private const string PLAYER_TAG = "Player";
 
@@ -44,7 +43,6 @@ namespace Networking
         }
 
         // Only called on the client, not server side
-        [Client]
         void Shoot()
         {
             // Defining the variable of our raycast
@@ -52,12 +50,6 @@ namespace Networking
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
             {
-                // IF we hit an player
-                if (hit.collider.tag == PLAYER_TAG)
-                {
-                    // Show name of player
-                    CmdPlayerShot(hit.collider.name);
-                }
                 // IF we hit an enemy
                 if (hit.collider.tag == "Enemy")
                 {
@@ -74,12 +66,6 @@ namespace Networking
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
             {
-                // IF we hit an player
-                if (hit.collider.tag == PLAYER_TAG)
-                {
-                    // Show name of player
-                    CmdPlayerShot(hit.collider.name);
-                }
                 // IF we hit an enemy
                 if (hit.collider.tag == "Enemy")
                 {
@@ -89,13 +75,6 @@ namespace Networking
 
                 yield return new WaitForSeconds(0.1f);
             }
-        }
-
-        [Command]
-        void CmdPlayerShot (string ID)
-        {
-            // Showing which player has been shot
-            Debug.Log(ID + " has been shot.");
         }
     }
 

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
-public class SmallEnemySpawner : NetworkBehaviour
+public class BigEnemySpawnerOffline : MonoBehaviour
 {
     public Transform target;
 
@@ -12,8 +11,8 @@ public class SmallEnemySpawner : NetworkBehaviour
 
     public Transform spawnPoint;
 
-    public float timeBetweenWaves = 4f;
-    private float countdown = 6f;
+    public float timeBetweenWaves = 10f;
+    private float countdown = 4f;
 
     public int waveIndex = 0;
 
@@ -47,7 +46,7 @@ public class SmallEnemySpawner : NetworkBehaviour
             SpawnEnemy();
 
             // spawn an enemy at 1 second intervals
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(8f);
         }
     }
 
@@ -55,6 +54,5 @@ public class SmallEnemySpawner : NetworkBehaviour
     void SpawnEnemy()
     {
         GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
-        NetworkServer.Spawn(clone);
     }
 }

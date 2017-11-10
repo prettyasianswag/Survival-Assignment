@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Networking
 {
@@ -64,6 +65,11 @@ namespace Networking
             if (col.gameObject.tag == ("Ground"))
             {
                 isGrounded = true;
+            }
+
+            if (col.gameObject.tag == ("Enemy"))
+            {
+                SceneManager.LoadScene(3);
             }
         }
     }  

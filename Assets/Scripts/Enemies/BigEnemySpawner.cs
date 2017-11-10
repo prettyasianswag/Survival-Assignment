@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class BigEnemySpawner : MonoBehaviour
+public class BigEnemySpawner : NetworkBehaviour
 {
     public Transform target;
 
@@ -53,7 +54,7 @@ public class BigEnemySpawner : MonoBehaviour
     // Spawns the enemy
     void SpawnEnemy()
     {
-        //Spawn Troll Prefab
         GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
+        NetworkServer.Spawn(clone);
     }
 }

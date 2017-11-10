@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GUISkin mainMenuSkin;
-    public GUIStyle muteButton, playButton, optionsButton, exitButton, returnButton;
+    public GUIStyle muteButton, onlineButton, offlineButton, optionsButton, exitButton, returnButton;
     public bool showOP;
     public float audioSlider;
     public float dirSlider;
@@ -72,14 +72,19 @@ public class MainMenu : MonoBehaviour
         // Setting the values for the buttons inside the main menu
         if (!showOP)
         {
+            GUI.Box(new Rect(10f * scrW, 4f * scrH, 6f * scrW, 1f * scrH), "Lan Host + Lan Client for MultiPlayer");
             GUI.Box(new Rect(12f * scrW, 5f * scrH, 4f * scrW, 1f * scrH), "WASD TO MOVE");
             GUI.Box(new Rect(12f * scrW, 6f * scrH, 4f * scrW, 1f * scrH), "SPACE TO JUMP");
             GUI.Box(new Rect(12f * scrW, 7f * scrH, 4f * scrW, 1f * scrH), "LEFT MOUSE CLICK TO FIRE");
             GUI.Box(new Rect(12f * scrW, 8f * scrH, 4f * scrW, 1f * scrH), "SURVIVE AS LONG AS YOU CAN!");
 
-            if (GUI.Button(new Rect (0f * scrW, 6f * scrH, 2f * scrW, 1f * scrH), "", playButton))
+            if (GUI.Button(new Rect (0f * scrW, 5f * scrH, 4f * scrW, 1f * scrH), "", onlineButton))
             {
                 SceneManager.LoadScene(1);
+            }
+            if (GUI.Button(new Rect(0f * scrW, 6f * scrH, 4f * scrW, 1f * scrH), "", offlineButton))
+            {
+                SceneManager.LoadScene(2);
             }
             if (GUI.Button(new Rect (0f * scrW, 7f * scrH, 2f * scrW, 1f * scrH), "", optionsButton))
             {
