@@ -53,6 +53,7 @@ public class SmallEnemySpawnerOffline : MonoBehaviour
     // Spawns the enemy
     void SpawnEnemy()
     {
-        GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
+        // Creating a clone of the prefab and spawning the prefab
+        Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
     }
 }

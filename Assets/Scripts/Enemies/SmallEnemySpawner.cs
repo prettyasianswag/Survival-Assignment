@@ -54,7 +54,9 @@ public class SmallEnemySpawner : NetworkBehaviour
     // Spawns the enemy
     void SpawnEnemy()
     {
+        // Creating a clone of the prefab and spawning the prefab
         GameObject clone = Instantiate(enemyPrefab, spawnPoint.position, transform.rotation);
+        // Spawning the prefab onto the network
         NetworkServer.Spawn(clone);
     }
 }

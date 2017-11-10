@@ -4,8 +4,9 @@
 [System.Serializable]
 public class PlayerWeapon
 {
+    // name of weapon
     public string name = "UMP-45";
 
-    public float damage = 10f;
-    public float range = 100f;
+    // range of weapon
+    public float range = 40f;
 }

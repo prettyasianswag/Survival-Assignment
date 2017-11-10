@@ -36,8 +36,10 @@ namespace Networking
                 Shoot();
             }
 
+            // IF player uses right click
             if (Input.GetButtonDown("Fire2"))
             {
+                // burst fire
                 StartCoroutine(BurstShoot());
             }
         }
@@ -73,6 +75,7 @@ namespace Networking
                     Destroy(hit.collider.gameObject);
                 }
 
+                // wait for a certain amount of seconds before raycasting again
                 yield return new WaitForSeconds(0.1f);
             }
         }

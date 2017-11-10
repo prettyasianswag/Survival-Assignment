@@ -20,37 +20,48 @@ namespace Networking
         // Use this for initialization
         void Start()
         {
+            // Lock cursor
+            Cursor.lockState = CursorLockMode.Locked;
+
             player = GetComponent<Player>();
+            // If it is not the local player on the network
             if (!isLocalPlayer)
             {
+                // Disable camera
                 cam.enabled = false;
+                // Disable audio listener
                 aListener.enabled = false;
+                // Assign the layer mask
                 AssignRemoteLayer();
             }
-
+            // Register the player into the server
             RegisterPlayer();
         }
 
         void RegisterPlayer()
         {
+            // Creating a unique ID for player on the server
             string ID = "Player " + GetComponent<NetworkIdentity>().netId;
             transform.name = ID;
         }
 
         void Update()
         {
-            // Check if current client has authority over this player
+            // If it is the local player
             if (isLocalPlayer)
             {
+                // IF player presses escape, unlock cursor
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Cursor.lockState = CursorLockMode.Confined;
                 }
-                else
+                // IF player presses w, lock cursor
+                if (Input.GetKeyDown(KeyCode.W))
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                 }
 
+                // Allow the player to move and jump
                 player.MouseRotateHorizontal();
                 player.MouseRotateVertical();
 
