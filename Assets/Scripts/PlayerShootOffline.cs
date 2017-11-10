@@ -36,10 +36,20 @@ namespace Networking
                 Shoot();
             }
 
+            if (Input.GetAxis("Fire1") > 0)
+            {
+                Shoot();
+            }
+
             // IF player uses right click
             if (Input.GetButtonDown("Fire2"))
             {
                 // burst fire
+                StartCoroutine(BurstShoot());
+            }
+
+            if (Input.GetAxis("Fire2") > 0)
+            {
                 StartCoroutine(BurstShoot());
             }
         }
